@@ -1,0 +1,10 @@
+**/target
+**/HELP.md
+**/node_modules
+
+### IntelliJ IDEA ###
+
+**/*.iml
+**/*.iws
+**/*.ipr
+**/.idea
