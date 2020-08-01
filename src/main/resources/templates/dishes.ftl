@@ -2,17 +2,6 @@
 <@c.page>
 
     <div>
-        <div style="text-align: center;"><h1>Новое блюдо</h1></div>
-        <form method="post" enctype="multipart/form-data" action="/dishes">
-                <input type="text" class="form-control" name="nameDish" placeholder="название блюда"/>
-                <input type="number" class="form-control" name="price" placeholder="цена (в сомах)"/>
-                <input type="text" class="form-control" name="description" placeholder="описание блюда"/>
-                <button type="submit" class="btn btn-warning">Добавить</button>
-        </form>
-    </div>
-
-
-    <div>
         <div style="text-align: center;"><h1>Удалить блюдо</h1></div>
         <form method="post" enctype="multipart/form-data" action="delete">
             <div class="form-group">

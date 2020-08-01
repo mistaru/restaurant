@@ -9,10 +9,12 @@ import org.example.repository.IngredientsRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
 
@@ -59,20 +61,15 @@ public class DishesController {
 
         model.put("Dishes", dishesIterable);
 
-        return "dishes";
+        return "menu";
     }
 
-    @PostMapping("delete")
+    @PostMapping("delete/{id}")
     @Transactional
     public String deleteDishes(
-            @RequestParam String nameDish,
-            Map<String, Object> model) {
-
-        Iterable<Dish> dishesIterable = dishesRepository.deleteByNameDish(nameDish);
-        dishesIterable = dishesRepository.findAll();
-
-        model.put("Dishes", dishesIterable);
-        return "dishes";
+            @Valid @PathVariable Long id) {
+        dishesRepository.deleteById(id);
+        return "menu";
     }
 
     @GetMapping("/addIngredients")
