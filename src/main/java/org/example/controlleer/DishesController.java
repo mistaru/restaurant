@@ -7,7 +7,6 @@ import org.example.model.Ingredients;
 import org.example.repository.CompositionRepository;
 import org.example.repository.DishesRepository;
 import org.example.repository.IngredientsRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,14 +20,16 @@ import java.util.Map;
 @Controller
 public class DishesController {
 
-    @Autowired
-    private DishesRepository dishesRepository;
+    private final DishesRepository dishesRepository;
+    private final IngredientsRepository ingredientsRepository;
+    private final CompositionRepository compositionRepository;
 
-    @Autowired
-    private IngredientsRepository ingredientsRepository;
 
-    @Autowired
-    private CompositionRepository compositionRepository;
+    public DishesController(DishesRepository dishesRepository, IngredientsRepository ingredientsRepository, CompositionRepository compositionRepository) {
+        this.dishesRepository = dishesRepository;
+        this.ingredientsRepository = ingredientsRepository;
+        this.compositionRepository = compositionRepository;
+    }
 
     @GetMapping("/dishes")
     public ModelAndView main() {

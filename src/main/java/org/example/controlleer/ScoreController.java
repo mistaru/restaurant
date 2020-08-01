@@ -1,11 +1,9 @@
 package org.example.controlleer;
 
 import org.example.model.*;
-import org.example.repository.CompositionRepository;
 import org.example.repository.DishesRepository;
 import org.example.repository.IngredientsRepository;
 import org.example.repository.ReportRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,17 +19,16 @@ import static java.util.stream.Collectors.groupingBy;
 
 @Controller
 public class ScoreController {
-    @Autowired
+
     ReportRepository reportRepository;
-
-    @Autowired
     DishesRepository dishesRepository;
-
-    @Autowired
     IngredientsRepository ingredientsRepository;
 
-    @Autowired
-    CompositionRepository compositionRepository;
+    public ScoreController(ReportRepository reportRepository, DishesRepository dishesRepository, IngredientsRepository ingredientsRepository) {
+        this.reportRepository = reportRepository;
+        this.dishesRepository = dishesRepository;
+        this.ingredientsRepository = ingredientsRepository;
+    }
 
     @GetMapping("/score")
     public ModelAndView listScore() {
