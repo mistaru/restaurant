@@ -1,16 +1,11 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="/">
-        <img src="https://pixy.org/src/13/131301.png" width="40" height="40" class="d-inline-block align-top" alt="">
-        Моя кухня
+        <img src="https://pngimage.net/wp-content/uploads/2018/06/food-sign-png.png" width="60" height="60">
+        Блюда
     </a>
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-             <span class="navbar-toggler-icon"></span>
-    </button>
-
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav">
             <li class="nav-item">
                 <p><a class="nav-link" href="http://localhost:9090/menu">Блюда</a></p>
             </li>

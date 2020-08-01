@@ -1,6 +1,5 @@
 package org.example.controlleer;
 
-
 import org.example.model.Composition;
 import org.example.model.Dish;
 import org.example.model.Ingredients;
@@ -23,7 +22,6 @@ public class DishesController {
     private final DishesRepository dishesRepository;
     private final IngredientsRepository ingredientsRepository;
     private final CompositionRepository compositionRepository;
-
 
     public DishesController(DishesRepository dishesRepository, IngredientsRepository ingredientsRepository, CompositionRepository compositionRepository) {
         this.dishesRepository = dishesRepository;
