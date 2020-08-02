@@ -8,9 +8,9 @@ import java.util.Set;
 @Table(name = "dishes")
     public class Dish implements Comparable<Dish> {
     @Id
-        @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.TABLE)
     @Column(name = "dishes_id")
-    private int id;
+    private Long id;
 
     @Column(unique = true)
     @Size(min = 1, max = 100)
@@ -68,11 +68,11 @@ import java.util.Set;
         return nameDish.compareTo(o.nameDish);
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

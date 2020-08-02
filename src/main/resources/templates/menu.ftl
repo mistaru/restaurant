@@ -2,24 +2,23 @@
 <@c.page>
     <div class="container">
 
-        <a class="btn btn-danger" data-toggle="collapse" href="#collapseExampleS" role="button" aria-expanded="false"
-           aria-controls="collapseExampleS">
+        <a class="btn btn-danger" data-toggle="collapse" href="#collapseExampleSs" role="button" aria-expanded="false"
+           aria-controls="collapseExampleSs">
             Добавить
         </a>
 
-        <a class="btn btn-success" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
-           aria-controls="collapseExample">
+        <a class="btn btn-success" data-toggle="collapse" href="#collapseExampleq" role="button" aria-expanded="false"
+           aria-controls="collapseExampleq">
             Найти
         </a>
 
-        <div class="collapse" id="collapseExampleS">
-            <form class="form-inline" method="post" action="/dishes">
+        <div class="collapse" id="collapseExampleSs">
+            <form class="form-inline" method="post" action="add">
                 <div>
                     <input type="text" class="form-control mb-2 mr-sm-2" name="nameDish" placeholder="Название блюда"
                            required/>
                     <input type="number" class="form-control mb-2 mr-sm-2" name="price" placeholder="Цена (в сомах)"
                            required/>
-
                     <input type="text" class="form-control mb-2 mr-sm-2" name="description" placeholder="описание блюда"
                            required/>
                     <button type="submit" class="btn btn-warning mb-2">Добавить</button>
@@ -27,7 +26,7 @@
             </form>
         </div>
 
-        <div class="collapse" id="collapseExample">
+        <div class="collapse" id="collapseExampleq">
             <div class="form-group mt-3">
                 <form class="form-inline" method="post" action="filter">
                     <div class="form-group">
@@ -48,18 +47,22 @@
                 <th>Название</th>
                 <th>Цена</th>
                 <th>Описание</th>
+                <th>Действия</th>
             </tr>
             </thead>
             <tbody>
+      <#if menuDishes??>
             <#list menuDishes as menuDishes>
                 <tr>
-                    <td>${menuDishes.getNameDish()}</td>
-                    <td>${menuDishes.getPrice()}</td>
-                    <td>${menuDishes.getDescription()}</td>
+                    <td>${menuDishes.nameDish}</td>
+                    <td>${menuDishes.price}</td>
+                    <td>${menuDishes.description}</td>
+                    <td><a href="/delete/${menuDishes.id}">Удалить</a></td>
                 </tr>
             <#else>
                 No message
             </#list>
+      </#if>
             </tbody>
         </table>
     </div>

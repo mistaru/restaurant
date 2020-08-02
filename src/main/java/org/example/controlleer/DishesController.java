@@ -8,10 +8,7 @@ import org.example.repository.DishesRepository;
 import org.example.repository.IngredientsRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
@@ -31,45 +28,11 @@ public class DishesController {
         this.compositionRepository = compositionRepository;
     }
 
-    @GetMapping("/dishes")
-    public ModelAndView main() {
-        Iterable<Dish> dishesIterable = dishesRepository.findAll();
-        List<Ingredients> ingredientsList = ingredientsRepository.findAll();
-        return new ModelAndView("dishes")
-                .addObject("Dishes", dishesIterable)
-                .addObject("ingredientsList", ingredientsList);
-    }
-
-    @PostMapping("/dishes")
-    public String addDishes(
-            @RequestParam String nameDish,
-            @RequestParam(required = false) Integer price,
-            @RequestParam(required = false) String description,
-            Map<String, Object> model) {
-        try {
-
-            Dish dish = new Dish(nameDish, price, description);
-
-            dishesRepository.save(dish);
-            model.put("DishMessage", "Блюдо с названием " + nameDish + " добавлен!");
-
-        } catch (Exception ex) {
-            model.put("errMessage", "Блюдо с названием " + nameDish + " уже существует");
-        }
-
-        Iterable<Dish> dishesIterable = dishesRepository.findAll();
-
-        model.put("Dishes", dishesIterable);
-
-        return "menu";
-    }
-
-    @PostMapping("delete/{id}")
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     @Transactional
-    public String deleteDishes(
-            @Valid @PathVariable Long id) {
+    public String deleteDishes(@PathVariable Long id) {
         dishesRepository.deleteById(id);
-        return "menu";
+        return "redirect:/menu";
     }
 
     @GetMapping("/addIngredients")

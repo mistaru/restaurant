@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="/">
         <img src="https://pngimage.net/wp-content/uploads/2018/06/food-sign-png.png" width="60" height="60">
-        Блюда
+        Кухня
     </a>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">

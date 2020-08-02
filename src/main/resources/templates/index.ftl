@@ -8,5 +8,4 @@
         <hr class="my-4">
     </div>
 
-</body>
 </@c.page>
