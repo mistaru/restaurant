@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
 
@@ -60,12 +59,6 @@ public class DishesController {
         composition.setDish(dish);
         composition.setIngredients(ingredients1);
         composition.setCount(count);
-
-    /*    List<Dish> dishes1 = dishesRepository.findAll();
-        d
-        dishes1.get(0).getCompositions().iterator().next().getIngredients().getProductName();
-        int a = dishes1.get(0).getCompositions().iterator().next().getIngredients().getPrice();
-*/
 
         compositionRepository.save(composition);
 

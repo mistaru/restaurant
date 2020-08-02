@@ -52,11 +52,11 @@ public class ScoreController {
                 .collect(groupingBy(Report::getDish));
 
         List<ReportDTO> reports = new ArrayList<>();
-        Integer overallSum = 0;
+        int overallSum = 0;
         for (Dish d : reportList.keySet()) {
             Integer price = d.getPrice();
             Integer currCount = reportList.get(d).stream().mapToInt(Report::getCount).sum();
-            Integer sum = currCount * d.getPrice();
+            int sum = currCount * d.getPrice();
 
             overallSum = overallSum + sum;
             reports.add(new ReportDTO(d, price, currCount, sum));
@@ -73,10 +73,10 @@ public class ScoreController {
         }
 
         List<IngredientDTO> ingredientsDTO = new ArrayList<>();
-        ingCount.keySet().stream()
+        ingCount.keySet()
                 .forEach(ing -> ingredientsDTO.add(new IngredientDTO(ing.getProductName(), ingCount.get(ing))));
 
-        Integer overallIngPrice = 0;
+        int overallIngPrice = 0;
         for (IngredientDTO ingDto : ingredientsDTO) {
             Ingredients ing = ingredientsRepository.findByProductName(ingDto.getName());
             overallIngPrice += (ing.getPrice() * ingDto.getCount());

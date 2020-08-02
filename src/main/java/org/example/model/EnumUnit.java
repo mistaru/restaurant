@@ -7,12 +7,7 @@ public enum EnumUnit {
 
     String description;
 
-    EnumUnit( String description) {
+    EnumUnit(String description) {
         this.description = description;
     }
 }
-
-
-//установить костуктор
-
-//грамм, пучок, штука

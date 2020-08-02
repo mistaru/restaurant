@@ -13,9 +13,6 @@
                 <p><a class="nav-link" href="http://localhost:9090/ingredients">Ингредиенты</a></p>
             </li>
             <li class="nav-item">
-                <p><a class="nav-link" href="http://localhost:9090/dishes">Добаление\Удаление блюда</a></p>
-            </li>
-            <li class="nav-item">
                 <p><a class="nav-link" href="http://localhost:9090/addIngredients">Состав блюда</a></p>
             </li>
             <li class="nav-item">
