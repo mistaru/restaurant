@@ -18,7 +18,7 @@
 
         <div class="collapse" id="collapseExampleS">
             <div class="form-group mt-3">
-                <form class="form-inline" method="post" action="/ingredients">
+                <form class="form-inline" method="post" action="/addIngredient">
 
                         <input type="text" class="form-control mb-2 mr-sm-2" name="productName" placeholder="Наименование"/>
                         <select name="enumUnit" class="custom-select mb-2">
@@ -34,7 +34,7 @@
 
         <div class="collapse" id="collapseExampleD">
             <div class="form-group mt-3">
-                <form method="post" action="deleteIngredients">
+                <form method="post" action="/deleteI/">
                     <div class="form-group">
                         <input type="text" class="form-control" name="productName" placeholder="введите наименование"/>
                     </div>
@@ -58,6 +58,14 @@
             </div>
         </div>
 
+        <#if errMessageI??>
+            <div>
+                <br>
+                <h2>${errMessageI}</h2>
+            </div>
+        </#if>
+
+
         <div style="text-align: center;"><h3>Ингридиенты</h3></div>
 
         <table class="table table-dark table-striped">
@@ -66,27 +74,24 @@
                 <th>Название</th>
                 <th>Единицы измерения</th>
                 <th>Цена за 100 грамм</th>
+                <th>Действие</th>
             </tr>
             </thead>
             <tbody>
+            <#if Ingredients??>
             <#list Ingredients as Ingredients>
                 <tr>
                     <td>${Ingredients.getProductName()}</td>
                     <td>${Ingredients.getEnumUnit()}</td>
                     <td>${Ingredients.getPrice()}</td>
+                    <td><a href="/deleteI/${Ingredients.id}">Удалить</a></td>
                 </tr>
             <#else>
                 Список пуст. Добавьте ингридиенты.
             </#list>
+            </#if>
             </tbody>
         </table>
     </div>
-
-    <#if errMessageI??>
-        <div>
-            <br>
-            <h2>${errMessageI}</h2>
-        </div>
-    </#if>
 
 </@c.page>

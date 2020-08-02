@@ -2,16 +2,17 @@ package org.example.controlleer;
 
 import org.example.model.Dish;
 import org.example.repository.DishesRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 @Controller
 public class MenuController {
@@ -24,11 +25,12 @@ public class MenuController {
 
     @RequestMapping(value = "/menu", method = RequestMethod.GET)
     public String main(Model model) {
-        Iterable<Dish> dishesIterable = dishesRepository.findAll();
 
-        List<Dish> sortedDishes = StreamSupport.stream(dishesIterable.spliterator(),false)
-                                                  .sorted()
-                                                  .collect(Collectors.toList());
+        List<Dish> sortedDishes = dishesRepository.findAll()
+                .stream()
+                .sorted()
+                .collect(Collectors.toList());
+
         model.addAttribute("menuDishes", sortedDishes);
         return "menu";
     }

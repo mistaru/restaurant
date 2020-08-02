@@ -3,7 +3,7 @@
 
 <div>
     <div style="text-align: center;"><h1>Набор Блюд</h1></div>
-    <form method="post" enctype="multipart/form-data" action="/report">
+    <form method="post" action="/report">
             <div>
                 <select name="table" class="custom-select">
                     <option selected="selected">Номер набора</option>

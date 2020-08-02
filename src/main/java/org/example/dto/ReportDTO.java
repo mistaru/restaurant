@@ -1,7 +1,8 @@
-package org.example.model;
+package org.example.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import org.example.model.Dish;
 
 
 @Data
