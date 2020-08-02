@@ -4,10 +4,7 @@ import org.example.model.Dish;
 import org.example.repository.DishesRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -21,6 +18,11 @@ public class MenuController {
 
     public MenuController(DishesRepository dishesRepository) {
         this.dishesRepository = dishesRepository;
+    }
+
+    @GetMapping("/")
+    public String hello(){
+        return "index";
     }
 
     @RequestMapping(value = "/menu", method = RequestMethod.GET)

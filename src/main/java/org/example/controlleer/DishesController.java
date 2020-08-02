@@ -51,12 +51,11 @@ public class DishesController {
             @RequestParam Integer count,
             Map<String, Object> model) {
 
-        List<Ingredients> ingredientsList = ingredientsRepository.findAllByProductName(productName);
+        Ingredients ingredientsList = ingredientsRepository.findByProductName(productName);
         Dish dish = dishesRepository.findByNameDish(nameDish);
-        Ingredients ingredients1 = ingredientsList.get(0);
         Composition composition = new Composition();
         composition.setDish(dish);
-        composition.setIngredients(ingredients1);
+        composition.setIngredients(ingredientsList);
         composition.setCount(count);
 
         compositionRepository.save(composition);

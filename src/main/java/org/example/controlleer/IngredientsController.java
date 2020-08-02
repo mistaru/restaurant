@@ -26,33 +26,24 @@ public class IngredientsController {
     }
 
     @RequestMapping(value = "/addIngredient", method = RequestMethod.POST)
-    public String add(@Valid Ingredients ingredients,
-                      Map<String, Object> model) {
-        try {
-            ingredientsRepository.save(ingredients);
-        } catch (Exception exi) {
-            model.put("errMessageI", "Ингредиент с названием " + ingredients.getProductName() + " уже существует");
-        }
+    public String add(@Valid Ingredients ingredients) {
+        ingredientsRepository.save(ingredients);
         return "redirect:/ingredients";
     }
 
     @PostMapping("filterIng")
     public String filter(@RequestParam(required = false) String filter, Map<String, Object> model) {
-        Iterable<Ingredients> ingredientsIterable;
 
-        if (filter != null && !filter.isEmpty()) {
-            ingredientsIterable = ingredientsRepository.findAllByProductName(filter);
-        } else {
-            ingredientsIterable = ingredientsRepository.findAll();
-        }
-        model.put("Ingredients", ingredientsIterable);
+        if (filter != null && !filter.isEmpty())
+            model.put("Ingredients", ingredientsRepository.findByProductName(filter));
+        else
+            model.put("Ingredients", ingredientsRepository.findAll());
         return "ingredients";
     }
 
     @RequestMapping(value = "/deleteI/{id}", method = RequestMethod.GET)
     @Transactional
     public String deleteIngredients(@PathVariable Long id) {
-
         ingredientsRepository.deleteById(id);
         return "redirect:/ingredients";
     }

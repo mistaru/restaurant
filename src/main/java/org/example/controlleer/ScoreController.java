@@ -35,14 +35,10 @@ public class ScoreController {
 
     @GetMapping("/score")
     public ModelAndView listScore() {
-        List<Dish> dishIterable = dishesRepository.findAll();
-        List<Ingredients> ingredientsList = ingredientsRepository.findAll();
-        List<Report> reportList = reportRepository.findAll();
-
         return new ModelAndView("score")
-                .addObject("Dishes", dishIterable)
-                .addObject("ingredientsList", ingredientsList)
-                .addObject("reportList", reportRepository);
+                .addObject("Dishes", dishesRepository.findAll())
+                .addObject("ingredientsList", ingredientsRepository.findAll())
+                .addObject("reportList", reportRepository.findAll());
     }
 
     @PostMapping("/score")

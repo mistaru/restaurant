@@ -1,18 +1,16 @@
 package org.example.controlleer;
 
-import org.example.model.Dish;
-import org.example.model.EnumTable;
-import org.example.model.Ingredients;
 import org.example.model.Report;
 import org.example.repository.DishesRepository;
 import org.example.repository.IngredientsRepository;
 import org.example.repository.ReportRepository;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
-import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -30,23 +28,17 @@ public class ReportController {
 
     @GetMapping("/report")
     public ModelAndView listReports() {
-        List<Dish> dishIterable = dishesRepository.findAll();
-        List<Ingredients> ingredientsList = ingredientsRepository.findAll();
-
         return new ModelAndView("report")
-                .addObject("Dishes", dishIterable)
-                .addObject("ingredientsList", ingredientsList)
-                .addObject("reportList", reportRepository);
+                .addObject("Dishes", dishesRepository.findAll())
+                .addObject("ingredientsList", ingredientsRepository.findAll())
+                .addObject("reportList", reportRepository.findAll());
     }
 
     @RequestMapping(value = "/report", method = RequestMethod.POST)
     public String addReport(@Valid Report report,
-            Map<String, Object> model) {
-
-        Dish dish = dishesRepository.findByNameDish(report.getDish().getNameDish());
+                            Map<String, Object> model) {
         reportRepository.save(report);
-        model.put("reportMessage", "Блюдо с названием " + dish + " добавлено!");
-
+        model.put("reportMessage", "Блюдо с названием " + report.getDish().getNameDish() + " добавлено!");
         return "report";
     }
 }
