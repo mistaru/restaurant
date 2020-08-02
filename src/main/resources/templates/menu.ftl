@@ -13,6 +13,7 @@
         </a>
 
         <div class="collapse" id="collapseExampleSs">
+            <div class="form-group mt-3">
             <form class="form-inline" method="post" action="add">
                 <div>
                     <input type="text" class="form-control mb-2 mr-sm-2" name="nameDish" placeholder="Название блюда"
@@ -24,6 +25,7 @@
                     <button type="submit" class="btn btn-warning mb-2">Добавить</button>
                 </div>
             </form>
+            </div>
         </div>
 
         <div class="collapse" id="collapseExampleq">

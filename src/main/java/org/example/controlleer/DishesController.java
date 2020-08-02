@@ -35,7 +35,6 @@ public class DishesController {
     }
 
     @GetMapping("/addIngredients")
-    @Transactional
     public ModelAndView listDishes() {
         List<Dish> dishIterable = dishesRepository.findAll();
         List<Ingredients> ingredientsList = ingredientsRepository.findAll();

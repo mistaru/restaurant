@@ -1,14 +1,10 @@
 <#import "parts/common.ftl" as c>
 <@c.page>
     <div class="container">
+
         <a class="btn btn-danger" data-toggle="collapse" href="#collapseExampleS" role="button" aria-expanded="false"
            aria-controls="collapseExampleS">
             Добавить
-        </a>
-
-        <a class="btn btn-warning" data-toggle="collapse" href="#collapseExampleD" role="button" aria-expanded="false"
-           aria-controls="collapseExampleD">
-            Удалить
         </a>
 
         <a class="btn btn-success" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
@@ -28,19 +24,6 @@
                         </select>
                         <input type="number" class="form-control mb-2 mr-sm-2" name="price" placeholder="Цена(шт,пч,100гр)"/>
                         <button type="submit" class="btn btn-warning mb-2">Добавить</button>
-                </form>
-            </div>
-        </div>
-
-        <div class="collapse" id="collapseExampleD">
-            <div class="form-group mt-3">
-                <form method="post" action="/deleteI/">
-                    <div class="form-group">
-                        <input type="text" class="form-control" name="productName" placeholder="введите наименование"/>
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-warning">Удалить</button>
-                    </div>
                 </form>
             </div>
         </div>
