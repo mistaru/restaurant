@@ -3,6 +3,7 @@ package org.example.controlleer;
 import org.example.dto.IngredientDTO;
 import org.example.dto.OverallDTO;
 import org.example.dto.ReportDTO;
+import org.example.enume.EnumTable;
 import org.example.model.*;
 import org.example.repository.DishesRepository;
 import org.example.repository.IngredientsRepository;

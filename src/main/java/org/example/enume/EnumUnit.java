@@ -1,4 +1,4 @@
-package org.example.model;
+package org.example.enume;
 
 public enum EnumUnit {
     грамм,

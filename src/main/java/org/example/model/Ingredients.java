@@ -1,6 +1,7 @@
 package org.example.model;
 
 import lombok.Data;
+import org.example.enume.EnumUnit;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
