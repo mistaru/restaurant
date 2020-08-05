@@ -16,14 +16,15 @@
             <div class="form-group mt-3">
                 <form class="form-inline" method="post" action="/addIngredient">
 
-                        <input type="text" class="form-control mb-2 mr-sm-2" name="productName" placeholder="Наименование"/>
-                        <select name="enumUnit" class="custom-select mb-2">
-                            <option>грамм</option>
-                            <option>пучок</option>
-                            <option>штук</option>
-                        </select>
-                        <input type="number" class="form-control mb-2 mr-sm-2" name="price" placeholder="Цена(шт,пч,100гр)"/>
-                        <button type="submit" class="btn btn-warning mb-2">Добавить</button>
+                    <input type="text" class="form-control mb-2 mr-sm-2" name="productName" placeholder="Наименование"/>
+                    <select name="enumUnit" class="custom-select mb-2">
+                        <option>грамм</option>
+                        <option>пучок</option>
+                        <option>штук</option>
+                    </select>
+                    <input type="number" class="form-control mb-2 mr-sm-2" name="price"
+                           placeholder="Цена(шт,пч,100гр)"/>
+                    <button type="submit" class="btn btn-warning mb-2">Добавить</button>
                 </form>
             </div>
         </div>
@@ -62,16 +63,16 @@
             </thead>
             <tbody>
             <#if Ingredients??>
-            <#list Ingredients as Ingredients>
-                <tr>
-                    <td>${Ingredients.getProductName()}</td>
-                    <td>${Ingredients.getEnumUnit()}</td>
-                    <td>${Ingredients.getPrice()}</td>
-                    <td><a href="/deleteI/${Ingredients.id}">Удалить</a></td>
-                </tr>
-            <#else>
-                Список пуст. Добавьте ингридиенты.
-            </#list>
+                <#list Ingredients as Ingredients>
+                    <tr>
+                        <td>${Ingredients.getProductName()}</td>
+                        <td>${Ingredients.getEnumUnit()}</td>
+                        <td>${Ingredients.getPrice()}</td>
+                        <td><a href="/deleteI/${Ingredients.id}">Удалить</a></td>
+                    </tr>
+                <#else>
+                    Список пуст. Добавьте ингридиенты.
+                </#list>
             </#if>
             </tbody>
         </table>

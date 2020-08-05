@@ -38,10 +38,14 @@ public class DishesController {
     public ModelAndView listDishes() {
         List<Dish> dishIterable = dishesRepository.findAll();
         List<Ingredients> ingredientsList = ingredientsRepository.findAll();
+        Iterable<Composition> compositions = compositionRepository.findAll();
+
 
         return new ModelAndView("addIngredients")
                 .addObject("Dishes", dishIterable)
-                .addObject("ingredientsList", ingredientsList);
+                .addObject("ingredientsList", ingredientsList)
+                .addObject("compositions", compositions);
+
     }
 
     @PostMapping("/addIngredients")
@@ -63,7 +67,11 @@ public class DishesController {
         Iterable<Dish> dishesIterable = dishesRepository.findAll();
         dishesRepository.save(dish);
 
+        Iterable<Composition> compositions = compositionRepository.findAll();
+
+
         model.put("addIngredient", dishesIterable);
+        model.put("compositions", compositions);
 
         return "addIngredients";
     }

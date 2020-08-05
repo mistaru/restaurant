@@ -20,7 +20,7 @@
                            required/>
                     <input type="number" class="form-control mb-2 mr-sm-2" name="price" placeholder="Цена (в сомах)"
                            required/>
-                    <input type="text" class="form-control mb-2 mr-sm-2" name="description" placeholder="описание блюда"
+                    <input type="text" class="form-control mb-2 mr-sm-2" name="description" placeholder="Описание блюда"
                            required/>
                     <button type="submit" class="btn btn-warning mb-2">Добавить</button>
                 </div>
