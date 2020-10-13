@@ -26,7 +26,7 @@
                             <option selected="selected">Выберите блюдо</option>
                             <#if Dishes??>
                                 <#list Dishes as Dishes>
-                                    <option>${Dishes.getNameDish()}</option>
+                                    <option>${Dishes.nameDish}</option>
                                 </#list>
                             </#if>
                         </select>

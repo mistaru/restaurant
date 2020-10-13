@@ -25,7 +25,10 @@ public class Report {
     @Column
     private int count;
 
-    public Report() {
-    }
 
+    public Report(EnumTable table, Dish dish, Integer count) {
+        this.table = table;
+        this.dish = dish;
+        this.count = count;
+    }
 }
