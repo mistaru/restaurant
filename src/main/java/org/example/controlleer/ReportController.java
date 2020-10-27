@@ -31,14 +31,13 @@ public class ReportController {
     public ModelAndView listReports() {
         return new ModelAndView("report")
                 .addObject("Dishes", dishesRepository.findAll())
-                .addObject("ingredientsList", ingredientsRepository.findAll())
                 .addObject("reportList", reportRepository.findAll());
     }
 
     @PostMapping("/report")
     public String addReport(
             @RequestParam EnumTable table,
-            @RequestParam String nameDish,
+            @RequestParam(required = false, name="nameDish") String nameDish ,
             @RequestParam(required = false) Integer count,
             Map<String, Object> model) {
 
@@ -47,6 +46,6 @@ public class ReportController {
         reportRepository.save(report);
         model.put("reportMessage", "Блюдо с названием " + nameDish + " добавлено!");
 
-        return "report";
+        return "redirect:/report";
     }
 }

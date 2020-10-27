@@ -1,13 +1,15 @@
 package org.example.model;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.util.Set;
 
 @Entity
-@Data
+@Setter
+@Getter
 @Table(name = "dishes")
 public class Dish implements Comparable<Dish> {
     @Id

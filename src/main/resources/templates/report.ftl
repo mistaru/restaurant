@@ -22,11 +22,11 @@
                     </div>
 
                     <div>
-                        <select name="dish" class="custom-select mb-2">
+                        <select name="nameDish" class="custom-select mb-2">
                             <option selected="selected">Выберите блюдо</option>
                             <#if Dishes??>
                                 <#list Dishes as Dishes>
-                                    <option>${Dishes.nameDish}</option>
+                                    <option>${Dishes.getNameDish()}</option>
                                 </#list>
                             </#if>
                         </select>

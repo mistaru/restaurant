@@ -1,10 +1,14 @@
 package org.example.model;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 @Entity
-@Data
+@Setter
+@Getter
 @Table(name = "composition")
 public class Composition {
 
