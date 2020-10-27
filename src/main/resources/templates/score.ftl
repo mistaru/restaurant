@@ -7,64 +7,71 @@
         }
     </style>
 
+    <a class="btn btn-danger" data-toggle="collapse" href="#collapseExampleSss" role="button" aria-expanded="false"
+       aria-controls="collapseExampleSss">
+        Выдача счета
+    </a>
 
-    <div style="text-align: center;"><h1>Выдача счета</h1></div>
-        <form method="post" enctype="multipart/form-data" action="/score">
-            <div>
-                <select name="table" class="custom-select">
-                    <option selected="selected">Номер набора</option>
-                    <option>Первый</option>
-                    <option>Второй</option>
-                    <option>Третий</option>
-                    <option>Четвертый</option>
-                    <option>Пятый</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-warning">Распечатать</button>
-            </div>
-        </form>
+    <div class="collapse" id="collapseExampleSss">
+        <div class="form-group mt-3">
+            <form  class="form-inline" method="post" enctype="multipart/form-data" action="/score">
+                <div>
+                    <select name="table" class="custom-select">
+                        <option selected="selected">Номер набора</option>
+                        <option>Первый</option>
+                        <option>Второй</option>
+                        <option>Третий</option>
+                        <option>Четвертый</option>
+                        <option>Пятый</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-warning">Распечатать</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
 
-<div style="text-align: center;"><h1>Счет</h1></div>
-<table>
-    <thead>
-    <tr>
-        <th>Блюдо</th>
-        <th>Кол-во</th>
-        <th>Цена</th>
-        <th>Сумма</th>
-    </tr>
-    </thead>
-    <tbody>
-   <#if Reports??>
-     <#list Reports as Reports>
+    <div style="text-align: center;"><h1>Счет</h1></div>
+    <table>
+        <thead>
         <tr>
-            <td> ${Reports.getDish().getNameDish()}</td>
-            <td> ${Reports.getCount()}</td>
-            <td> ${Reports.getPrice()}</td>
-            <td> ${Reports.getSum()}</td>
+            <th>Блюдо</th>
+            <th>Кол-во</th>
+            <th>Цена</th>
+            <th>Сумма</th>
         </tr>
-     <#else>
-         No message
-     </#list>
-   </#if>
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+        <#if Reports??>
+            <#list Reports as Reports>
+                <tr>
+                    <td> ${Reports.getDish().getNameDish()}</td>
+                    <td> ${Reports.getCount()}</td>
+                    <td> ${Reports.getPrice()}</td>
+                    <td> ${Reports.getSum()}</td>
+                </tr>
+            <#else>
+                No message
+            </#list>
+        </#if>
+        </tbody>
+    </table>
 
     <#if overall1??>
+        <div>
+            <br/>
+            <span>Итого к оплате: ${overall1.getOverallSum()}</span>
+            <br/>
+        </div>
+    <#else>
+        No message
+    </#if>
+
     <div>
         <br/>
-        <span>Итого к оплате: ${overall1.getOverallSum()}</span>
-        <br/>
     </div>
-     <#else>
-         No message
-       </#if>
-
-<div>
-<br/>
-</div>
 
     <#if ingredients??>
         <#list ingredients as ingredients>
@@ -79,15 +86,14 @@
         </#list>
     </#if>
 
-
     <#if overall1??>
-            <div>
-                <br/>
-                <span>Себестоимость : ${overall1.getOverallIngSum()}</span>
-                <br/>
-            </div>
-        <#else>
-            No message
+        <div>
+            <br/>
+            <span>Себестоимость : ${overall1.getOverallIngSum()}</span>
+            <br/>
+        </div>
+    <#else>
+        No message
     </#if>
 </@c.page>
 
