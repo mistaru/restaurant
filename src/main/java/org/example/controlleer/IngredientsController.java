@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.Map;
 
 @Controller
 public class IngredientsController {
@@ -31,13 +30,19 @@ public class IngredientsController {
         return "redirect:/ingredients";
     }
 
-    @PostMapping("filterIng")
-    public String filter(@RequestParam(required = false) String filter, Map<String, Object> model) {
+    @PostMapping("/filterIng")
+    public String filter(@RequestParam(required = false) String filter, Model model) {
 
-        if (filter != null && !filter.isEmpty())
-            model.put("Ingredients", ingredientsRepository.findByProductName(filter));
-        else
-            model.put("Ingredients", ingredientsRepository.findAll());
+        Iterable<Ingredients> ingredients;
+
+        if (filter != null && !filter.isEmpty()) {
+            ingredients = ingredientsRepository.findAllByProductName(filter);
+        }
+        else {
+            ingredients = ingredientsRepository.findAll();
+        }
+
+        model.addAttribute("Ingredients", ingredients);
         return "ingredients";
     }
 

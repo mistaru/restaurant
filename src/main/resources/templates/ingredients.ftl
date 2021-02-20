@@ -31,7 +31,7 @@
 
         <div class="collapse" id="collapseExample">
             <div class="form-group mt-3">
-                <form class="form-inline" method="post" action="filterIng">
+                <form class="form-inline" method="post" action="/filterIng">
                     <div class="form-group">
                         <input type="text" class="form-control mb-2 mr-sm-2" name="filter" placeholder="Наименование"/>
                     </div>

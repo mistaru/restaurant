@@ -62,7 +62,7 @@
                     <td><a href="/delete/${menuDishes.id}">Удалить</a></td>
                 </tr>
             <#else>
-                No message
+                Список пуст. Добавьте блюдо.
             </#list>
       </#if>
             </tbody>
